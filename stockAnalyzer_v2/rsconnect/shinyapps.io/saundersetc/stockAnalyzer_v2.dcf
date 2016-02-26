@@ -1,0 +1,8 @@
+name: stockAnalyzer_v2
+account: saundersetc
+server: shinyapps.io
+bundleId: 380506
+url: https://saundersetc.shinyapps.io/stockAnalyzer_v2/
+when: 1456419057.26004
+asMultiple: FALSE
+asStatic: FALSE
