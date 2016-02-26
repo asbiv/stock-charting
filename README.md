@@ -1,3 +1,2 @@
 # stock-charting
-Simple shiny app to visualize faceted charts of stock prices by ticker symbol using ggplot and quantmod
-Here are some tutorial edits
+Simple shiny app to visualize faceted candlestick charts of stock prices by ticker symbol using ggplot and quantmod
