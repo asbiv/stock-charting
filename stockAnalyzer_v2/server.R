@@ -1,25 +1,11 @@
 library(shiny)
 
-#TO DO
-#1. ASB Add value calculator
-
 source("ggSeriesData_v1.R")
 
 shinyServer(function(input, output) {
   
-  #Testing selectize
   data <- reactive(ggSeriesData(input$select.in, start=input$date.range[1], end=input$date.range[2]))
   
-  #Graphing Step
-  'output$plot <- renderPlot(
-    ggplot(data(), aes(x=date, y=candleMiddle, group=symbol)) + 
-  geom_line(aes(color=symbol)) + facet_wrap(~symbol))'
-  
-'  output$plot <- renderPlot(
-    ggplot(data(), aes(x=date)) + geom_boxplot(aes(ymin=low, lower=candleLower, middle=candleMiddle, 
-                                                                upper=candleUpper, ymax=high, colour=fill), stat="identity") + 
-    facet_wrap(~symbol))'
-    
   output$plot <- renderPlot(
     ggplot(data(), aes(x=date)) + geom_boxplot(aes(ymin=low, lower=candleLower, middle=candleMiddle, 
                                                       upper=candleUpper, ymax=high, colour=fill), stat="identity") + 
@@ -32,11 +18,5 @@ shinyServer(function(input, output) {
           panel.grid.major=element_line(colour="#C9D9E1")) + 
     facet_wrap(~symbol)
     )
-  
-  'output$table <- renderDataTable({
-#    data()[(as.Date(data()$Date) >= as.Date(input$date.range[2]) - 5),]
-    data.in <- data()[(as.Date(data()$Date) >= as.Date(input$date.range[2]) - 5),]
-    data.in <- data.in[c(1:2,7:8)]
-    }, options = list(searching=FALSE, paging=FALSE, info=FALSE))'
   
 })
