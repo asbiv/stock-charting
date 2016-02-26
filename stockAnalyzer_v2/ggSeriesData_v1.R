@@ -45,23 +45,3 @@ ggSeriesData <- function(symbol.list, start, end){
   x.merged <- Reduce(function(...) merge(..., all=T), x.subset)
   return(x.merged)
 }
-  
-'#CHART TESTING
-mssb <- c("BNCN", "EMR", "MO")
-symbol.list <- mssb
-start <- Sys.Date()-100
-end <- Sys.Date()
-merged.data <- ggSeriesData(symbol.list, start, end)
-  
-#Graphing Step
-ggplot(merged.data, aes(x=date)) + geom_boxplot(aes(ymin=low, lower=candleLower, middle=candleMiddle, 
-                                                    upper=candleUpper, ymax=high, colour=fill), stat="identity") + 
-  geom_line(aes(x=date, y=maShort, linetype="50 MA"), color="#404040") + 
-  geom_line(aes(x=date, y=maLong, linetype="200 MA"), color="#404040") + 
-  scale_color_manual(values = c("Loss"="#de2d26", "Gain"="#31a354"), guide = guide_legend(title = "Daily G/L")) + 
-  scale_linetype_manual(values=c("200 MA" = 3, "50 MA" = 2), guide = guide_legend(title = "Moving Average")) +
-  labs(x=NULL, y="Price (USD)") +
-  theme(panel.background = element_rect(fill = "#FFFFFF", colour="#C9D9E1"), 
-        panel.grid.major=element_line(colour="#C9D9E1")) + 
-  facet_wrap(~symbol)'
-
