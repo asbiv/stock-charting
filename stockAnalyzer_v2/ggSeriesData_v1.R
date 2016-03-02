@@ -1,8 +1,8 @@
 
-#ASB SEARCH + CHART BUILDER
+#SEARCH + CHART BUILDER, thanks http://bit.ly/1oYFd13 for inspiration
 ggSeriesData <- function(symbol.list, start, end){
   
-  #Loop through symbols, fetch prices, and store in symbol.list
+  #Loop through symbols, fetch prices, and store in x.subset
   x.list <- list()
   x.list <-lapply(symbol.list, function(x) {getSymbols(x, auto.assign=FALSE, options("getSymbols.warning4.0"=FALSE))})
   names(x.list) <- symbol.list
